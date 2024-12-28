@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivationMachine", "src\MotivationMachine.csproj", "{E48E4FAB-288C-45DD-A4B6-EA9EF906BEF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivationMachine.Test", "test\MotivationMachine.Test.csproj", "{C2F3E8C0-6945-442D-95E1-7E12ECEED6BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E48E4FAB-288C-45DD-A4B6-EA9EF906BEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48E4FAB-288C-45DD-A4B6-EA9EF906BEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48E4FAB-288C-45DD-A4B6-EA9EF906BEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48E4FAB-288C-45DD-A4B6-EA9EF906BEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F3E8C0-6945-442D-95E1-7E12ECEED6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F3E8C0-6945-442D-95E1-7E12ECEED6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F3E8C0-6945-442D-95E1-7E12ECEED6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F3E8C0-6945-442D-95E1-7E12ECEED6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
