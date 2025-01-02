@@ -108,6 +108,14 @@ a.secondary {
   flex-shrink: 0;
 }
 
+.clockwise {
+  animation: rotate 2s linear infinite;
+}
+
+.anti-clockwise {
+  animation: rotate 2s linear infinite reverse;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
