@@ -20,6 +20,12 @@ test('get motivated gear on button click', async ({ page }) => {
     await expect(page.locator('.motivator-gear')).toBeVisible();
 });
 
+test('get under construction warning', async ({page}) => {
+    await page.goto('http://localhost:3000/');
+
+    await expect(page.locator('')).toHaveText('Under construction');
+})
+
 test('get gear direction', async ({ page }) => {
   await page.goto('http://localhost:3000/');
 
@@ -32,8 +38,8 @@ test('get gear direction', async ({ page }) => {
 
     // Expects the page to show the logo
     const gears = page.locator('.motivator-gear');
-    await expect(gears.nth(0)).toHaveClass('motivator-gear clockwise');
-    await expect(gears.nth(1)).toHaveClass('motivator-gear anti-clockwise');
-    await expect(gears.nth(2)).toHaveClass('motivator-gear clockwise');
-    await expect(gears.nth(3)).toHaveClass('motivator-gear anti-clockwise');
+    await expect(gears.nth(0)).toHaveCSS('animation', /^((?!reverse).)*$/);
+    await expect(gears.nth(1)).toHaveCSS('animation', /^.*reverse.*$/);
+    await expect(gears.nth(2)).toHaveCSS('animation', /^((?!reverse).)*$/);
+    await expect(gears.nth(3)).toHaveCSS('animation', /^.*reverse.*$/);
 });
