@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, devices, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
   await page.goto('http://localhost:3000/');
@@ -24,7 +24,24 @@ test('get under construction warning', async ({page}) => {
     await page.goto('http://localhost:3000/');
 
     await expect(page.locator('')).toHaveText('Under construction');
-})
+});
+
+test('category selector is rendered', async ({ page }) => {
+    await page.goto('http://localhost:3000/');
+
+    // Expects the page to show the category selector
+    await expect(page.locator('.category-selector')).toBeVisible();
+    await expect(page.locator('.left-side')).toBeVisible();
+});
+
+test('category selector for phone', async ({ page }) => {
+    await page.goto('http://localhost:3000/');
+    await page.setViewportSize(devices['Pixel 7'].viewport);
+
+    // Expects the page to show the category selector
+    await expect(page.locator('.category-selector')).toBeVisible();
+    await expect(page.locator('.left-side')).not.toBeVisible();
+});
 
 test('get gear direction', async ({ page }) => {
   await page.goto('http://localhost:3000/');

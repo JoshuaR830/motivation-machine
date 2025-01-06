@@ -5,6 +5,7 @@ import MotivationGear from "../components/motivation-gear";
 import {Box, CssBaseline, AppBar, Toolbar, Typography, Button, Icon} from "@mui/material";
 import {Lightbulb} from "@mui/icons-material";
 import theme from "@/theme";
+import CategorySelector from "@/components/category-selector";
 // import MenuIcon from "@mui/icons-material/Menu";
 
 
@@ -48,11 +49,17 @@ export default function Home() {
                 <Typography variant='h6' sx={{ ml: 2 }}>Under construction</Typography>
             </Box>
 
+            <Box sx={{display: 'flex', justifyContent: 'space-between', mb: 2}}>
+  
+              <Box className='left-part' sx={{ display: { xs: 'none', sm: 'block' } }}></Box>
+              <CategorySelector categories={["Morning", "Afternoon", "Evening"]} />
+            </Box>
+
             <Button variant="contained" onClick={displayCrate}>Get Motivated</Button>
 
-              {motivators.map((motivator, index) => (
-                  <MotivationGear key={index} index={index} motivator={motivator} />
-              ))}
+            {motivators.map((motivator, index) => (
+                <MotivationGear key={index} index={index} motivator={motivator} />
+            ))}
         </Box>
     </Box>
   );
