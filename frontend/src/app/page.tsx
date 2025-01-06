@@ -51,7 +51,9 @@ export default function Home() {
 
             <Box sx={{display: 'flex', justifyContent: 'space-between', mb: 2}}>
   
-              <Box className='left-part' sx={{ display: { xs: 'none', sm: 'block' } }}></Box>
+              <Box className='left-side' sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  <Typography variant='h6'>Visible</Typography>
+              </Box>
               <CategorySelector categories={["Morning", "Afternoon", "Evening"]} />
             </Box>
 

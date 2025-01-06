@@ -16,6 +16,12 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/tests/" // Adjust this path to match the location of your Playwright tests
+  ],
 };
+
+
 
 export default createJestConfig(config);

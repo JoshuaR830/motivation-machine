@@ -1,15 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CategorySelector from '../src/components/category-selector';
 
 describe('Category Selector', () => {
+  const categories = ['Work', 'Personal', 'Fitness'];
+
   it('should display a list of categories', () => {
-    const categories = ['Work', 'Personal', 'Fitness'];
     render(<CategorySelector categories={categories} />);
 
-    const categorySelectorElement = document.querySelectorAll('.category-selector')!;
-    categorySelectorElement.forEach((element, index) => {
-      expect(element).toHaveTextContent(categories[index]);
-    })
+    const headings = screen.getAllByRole('heading', { level: 6 });
+
+    headings.forEach((heading, index) => {
+      expect(heading.textContent).toBe(categories[index]);
+    });
   });
 });

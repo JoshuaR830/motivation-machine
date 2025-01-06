@@ -23,10 +23,11 @@ test('get motivated gear on button click', async ({ page }) => {
 test('get under construction warning', async ({page}) => {
     await page.goto('http://localhost:3000/');
 
-    await expect(page.locator('')).toHaveText('Under construction');
+    await expect(page.getByRole('heading', { level: 6, name: 'Under construction' })).toBeVisible();
 });
 
 test('category selector is rendered', async ({ page }) => {
+    await page.setViewportSize({ width: 600, height: 720 });
     await page.goto('http://localhost:3000/');
 
     // Expects the page to show the category selector
@@ -35,8 +36,8 @@ test('category selector is rendered', async ({ page }) => {
 });
 
 test('category selector for phone', async ({ page }) => {
+    await page.setViewportSize({ width: 599, height: 720 });
     await page.goto('http://localhost:3000/');
-    await page.setViewportSize(devices['Pixel 7'].viewport);
 
     // Expects the page to show the category selector
     await expect(page.locator('.category-selector')).toBeVisible();
