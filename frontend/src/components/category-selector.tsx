@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Box } from "@mui/material";
 import Category from "./category";
 
@@ -11,6 +10,6 @@ function CategorySelector({ categories }: { categories: string[] }) {
           <Category key={category} category={category}></Category>
         ))}
       </Box>
-    )};
+    )}
 
 export default CategorySelector;
