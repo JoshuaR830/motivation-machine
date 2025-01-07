@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import MotivationCrate from "../components/motivation-crate";
 import MotivationGear from "../components/motivation-gear";
 import {Box, CssBaseline, AppBar, Toolbar, Typography, Button, Icon} from "@mui/material";
 import {Lightbulb} from "@mui/icons-material";
@@ -88,7 +89,7 @@ export default function Home() {
             <Button variant="contained" onClick={displayCrate}>Get Motivated</Button>
 
             {motivators.map((motivator, index) => (
-                <MotivationGear key={index} index={index} motivator={motivator} size={null} />
+                <MotivationCrate key={motivator+index} />
             ))}
         </Box>
     </Box>
