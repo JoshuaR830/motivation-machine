@@ -3,11 +3,9 @@ import { render, screen } from '@testing-library/react';
 import Page from '../src/app/page';
 
 describe('Page', () => {
-    it('should render the page', () => {
+    it('should render the page heading', () => {
         render(<Page/>);
-
-        const heading = screen.getByRole('heading', { level: 1 });
-
+        const heading = screen.getByText('Motivation Machine');
         expect(heading).toBeInTheDocument();
     });
 });

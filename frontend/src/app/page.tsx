@@ -1,11 +1,12 @@
 'use client';
 
 import React from "react";
+import MotivationCrate from "../components/motivation-crate";
 import MotivationGear from "../components/motivation-gear";
 import {Box, CssBaseline, AppBar, Toolbar, Typography, Button, Icon} from "@mui/material";
 import {Lightbulb} from "@mui/icons-material";
 import theme from "@/theme";
-// import MenuIcon from "@mui/icons-material/Menu";
+import CategorySelector from "@/components/category-selector";
 
 
 // ToDo: Create a list of items for the motivation-crate components
@@ -23,7 +24,6 @@ export default function Home() {
   }
 
   return (
-
     <Box>
       <CssBaseline />
       <AppBar component="nav">
@@ -37,6 +37,36 @@ export default function Home() {
         </Toolbar>
       </AppBar>
         <Box component='main' sx={{ p: 3 }}>
+            <Box sx={{ display: 'flex', position: 'absolute', width: 1, ml:-3, height: 1 }}>
+                <Box sx={{display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', width: 1}}>
+                    <Box sx={{display: 'flex', flexDirection: 'row', overflow: 'hidden', width: 1}}>
+                        <Box sx={{ flexGrow: 1}}></Box>
+                        <Box sx={{ mt: -20 }} >
+                            <MotivationGear key={1} index={1} motivator='' size='xlarge'/>
+                        </Box>
+                        <Box sx={{ flexGrow: 1}}>A</Box>
+                    </Box>
+                    <Box sx={{display: 'flex', flexDirection: 'row', overflow: 'hidden'}}>
+                        <Box sx={{ display: 'block', ml: -15 }} >
+                            <MotivationGear key={2} index={2} motivator='' size='large'/>
+                        </Box>
+                    </Box>
+                    <Box sx={{display: 'flex', flexDirection: 'row', overflow: 'hidden'}}>
+                        <Box sx={{ flexGrow: 2 }}></Box>
+                        <Box sx={{ mr: '200px' }} >
+                            <MotivationGear key={3} index={1} motivator='' size='xlarge'/>
+                        </Box>
+                    </Box>
+                </Box>
+                <Box sx={{display: { xs: 'flex', sm: 'none'}, flexDirection: 'column', height: 1, ml: '270px' }}>
+                    <Box sx={{ display: 'block', flexGrow: 1}} ></Box>
+                    <Box sx={{ display: 'block', ml: -15 }} >
+                        <MotivationGear key={2} index={2} motivator='' size='large'/>
+                    </Box>
+                    <Box sx={{ display: 'block', flexGrow: 2}} ></Box>
+                </Box>
+            </Box>
+
             <Toolbar />
 
             <Box
@@ -48,11 +78,19 @@ export default function Home() {
                 <Typography variant='h6' sx={{ ml: 2 }}>Under construction</Typography>
             </Box>
 
+            <Box sx={{display: 'flex', justifyContent: 'space-between', mb: 2}}>
+
+              <Box className='left-side' sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  <Typography variant='h6'>Visible</Typography>
+              </Box>
+              <CategorySelector categories={["Morning", "Afternoon", "Evening"]} />
+            </Box>
+
             <Button variant="contained" onClick={displayCrate}>Get Motivated</Button>
 
-              {motivators.map((motivator, index) => (
-                  <MotivationGear key={index} index={index} motivator={motivator} />
-              ))}
+            {motivators.map((motivator, index) => (
+                <MotivationCrate key={motivator+index} />
+            ))}
         </Box>
     </Box>
   );
