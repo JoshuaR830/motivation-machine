@@ -7,6 +7,6 @@ function Category({ category }: { category: string }) {
       {category}
     </Typography>
   </Box>
-)};
+)}
 
 export default Category;

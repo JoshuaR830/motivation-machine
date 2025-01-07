@@ -2,9 +2,10 @@
 import React from "react";
 import Box from "@mui/material/Box";
 
-function MotivationGear({ index, motivator }: { index: number; motivator: string }) {
+function MotivationGear({ index, motivator, size }: { index: number; motivator: string, size: string | null }) {
     const rotationPrefix = "rotation 2s linear infinite";
     const rotation = rotationPrefix + (index % 2 === 0 ? '' : ' reverse');
+    const dimension = size === 'large' ? 200 : size === 'xlarge' ? 300 : 100;
     return (
         <Box
             className='motivator-gear'
@@ -17,15 +18,15 @@ function MotivationGear({ index, motivator }: { index: number; motivator: string
                 }
             },
             animation: rotation,
-            width: 100,
-            height: 100,
+            width: dimension,
+            height: dimension,
             }}>
 
         <Image
             src="/small_silver_gear.png"
             alt={motivator}
-            width={100}
-            height={100}
+            width={dimension}
+            height={dimension}
         />
         </Box>
     );
