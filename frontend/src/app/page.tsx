@@ -37,7 +37,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
         <Box component='main' sx={{ p: 3 }}>
-            <Box sx={{ display: 'flex', position: 'absolute', width: 1, ml:-3, height: 1 }}>
+            <Box sx={{ display: 'flex', position: 'absolute', width: 1, ml:-3, height: {xs: 1, sm: 'unset'}, minHeight: {xs: 'unset', sm: 1} }}>
                 <Box sx={{display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', width: 1}}>
                     <Box sx={{display: 'flex', flexDirection: 'row', overflow: 'hidden', width: 1}}>
                         <Box sx={{ flexGrow: 1}}></Box>
