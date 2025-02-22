@@ -7,7 +7,7 @@ data "archive_file" "motivation_machine_zip" {
 resource "aws_lambda_function" "motivation_test_function" {
   function_name = "motivation_test_function"
   role          = var.motivation_test_lambda_role_arn
-  runtime       = "provided.al2023"
+  runtime       = "dotnet8"
   architectures = [ "arm64" ]
   handler       = "MotivationMachineFunctions"
   filename      = "../src/motivation_machine.zip"
