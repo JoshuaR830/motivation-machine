@@ -116,3 +116,8 @@ src/.vs/config/applicationhost.config
 
 # JetBrains Rider's auto generated files
 .idea/
+
+**/motivation_machine*
+**/aws-lambda-tools-defaults.json
+**/terraform/.terraform**
+**serverless.template
