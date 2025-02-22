@@ -12,6 +12,9 @@ resource "aws_lambda_function" "motivation_test_function" {
   handler       = "MotivationMachineFunctions"
   filename      = "../src/motivation_machine.zip"
 
+  timeout     = 30
+  memory_size = 512
+
   environment {
     variables = {
       ANNOTATIONS_HANDLER: "HelloWorld"
