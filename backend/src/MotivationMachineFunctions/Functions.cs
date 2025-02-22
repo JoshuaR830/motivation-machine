@@ -24,6 +24,7 @@ public class Functions
 
 [JsonSerializable(typeof(string))]
 [JsonSerializable(typeof(APIGatewayHttpApiV2ProxyRequest))]
+[JsonSerializable(typeof(APIGatewayHttpApiV2ProxyResponse ))]
 public partial class LambdaFunctionJsonSerializerContext : JsonSerializerContext
 {
 }
