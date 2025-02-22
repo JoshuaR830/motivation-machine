@@ -6,12 +6,15 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'backend/**'
   pull_request:
-    branches: [ "main" ]
+    paths:
+      - 'backend/**'
 
 jobs:
   build:
-
+    environment: Production
     runs-on: ubuntu-24.04-arm
 
     defaults:
@@ -28,3 +31,30 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet publish -c Release -o ../motivation_machine -r linux-arm64 --self-contained
+    - name: Set up dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gnupg software-properties-common curl
+    - name: Add HashiCorp GPG key
+      run: |
+        curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    - name: Add HashiCorp repository
+      run: |
+        sudo apt-add-repository "deb [arch=arm64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    - name: Install Terraform
+      run: |
+        sudo apt-get update
+        sudo apt-get install terraform
+    - name: Verify Terraform installation
+      run: terraform version
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+    - name: Terraform
+      run: |
+        cd ../../terraform
+        terraform init
+        terraform apply -auto-approve

@@ -1,34 +1,23 @@
-resource "null_resource" "build_motivation_machine_function" {
-  provisioner "local-exec" {
-    command     = <<EOT
-        dotnet restore ../src/MotivationMachineFunctions
-        dotnet publish ../src/MotivationMachineFunctions -c Release -o ../src/motivation_machine -r win-x64 --self-contained
-      EOT
-    interpreter = ["PowerShell", "-Command"]
-  }
-  triggers = {
-    always_run = "${timestamp()}"
-  }
-}
-
 data "archive_file" "motivation_machine_zip" {
   type        = "zip"
   source_dir  = "../src/motivation_machine"
   output_path = "../src/motivation_machine.zip"
-
-  depends_on = [null_resource.build_motivation_machine_function]
 }
 
 resource "aws_lambda_function" "motivation_test_function" {
   function_name = "motivation_test_function"
   role          = var.motivation_test_lambda_role_arn
   runtime       = "dotnet8"
+  architectures = [ "arm64" ]
   handler       = "MotivationMachineFunctions"
   filename      = "../src/motivation_machine.zip"
 
+  timeout     = 30
+  memory_size = 512
+
   environment {
     variables = {
-      "ANNOTATIONS_HANDLER": "HelloWorld"
+      ANNOTATIONS_HANDLER: "HelloWorld"
     }
   }
 
