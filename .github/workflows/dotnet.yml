@@ -6,8 +6,11 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'backend/**'
   pull_request:
-    branches: [ "main" ]
+    paths:
+      - 'backend/**'
 
 jobs:
   build:
@@ -28,3 +31,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet publish -c Release -o ../motivation_machine -r linux-arm64 --self-contained
+    - name: Terraform
+      run: |
+        cd ../../terraform
+        terraform init
+        terraform apply -auto-approve
