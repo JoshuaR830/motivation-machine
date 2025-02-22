@@ -16,7 +16,7 @@ public class Functions
     [HttpApi(LambdaHttpMethod.Get, "/hello-world")]
     public string HelloWorld()
     {
-        Console.WriteLine("Hello World");
+        Console.WriteLine("Hello World 2");
         return "Hello World";
     }
 }
