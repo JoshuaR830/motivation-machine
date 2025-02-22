@@ -14,7 +14,7 @@ resource "aws_lambda_function" "motivation_test_function" {
 
   environment {
     variables = {
-      "ANNOTATIONS_HANDLER": "HelloWorld"
+      ANNOTATIONS_HANDLER: "HelloWorld"
     }
   }
 
